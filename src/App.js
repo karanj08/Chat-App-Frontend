@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     if (authuser) {
-      const socket = io("http://localhost:8000", {
+      const socket = io(`${process.env.BASE_URI}`, {
         query: { userId: authuser._id },
       });
       dispatch(setSocket(socket));

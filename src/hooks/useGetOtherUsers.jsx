@@ -10,7 +10,7 @@ const useGetOtherUsers = () => {
     const fetchOtherUser = async () => {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("http://localhost:8000/api/v1/user/");
+        const res = await axios.get(`${process.env.BASE_URI}/api/v1/user/`);
         dispatch(setotherusers(res.data.otherUser));
       } catch (error) {
         console.log(error);

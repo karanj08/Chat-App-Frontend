@@ -21,7 +21,7 @@ const SignUp = () => {
     try {
       console.log(user);
       const res = await axios.post(
-        "http://localhost:8000/api/v1/user/register",
+        `${process.env.BASE_URI}/api/v1/user/register`,
         user
       );
 
