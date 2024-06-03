@@ -15,7 +15,7 @@ const SendInput = () => {
     try {
       console.log(`${selecteduser._id}`);
       const res = await axios.post(
-        `http://localhost:8000/api/v1/message/send/${selecteduser._id}`,
+        `${process.env.BASE_URI}/api/v1/message/send/${selecteduser._id}`,
         { message },
         {
           headers: {
