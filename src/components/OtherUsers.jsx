@@ -5,16 +5,26 @@ import { useSelector } from "react-redux";
 
 const OtherUsers = () => {
   useGetOtherUsers();
-  const { otherusers } = useSelector((store) => store.user);
+  const { otherusers, searchuser } = useSelector((store) => store.user);
   // console.log(otherUsers);
   if (!otherusers) return;
 
   return (
-    <div className="flex-col">
-      {otherusers?.map((user) => {
-        return <OtherUser key={user._id} user={user} />;
-      })}
-    </div>
+    <>
+      {searchuser.length ? (
+        <div className="flex-col">
+          {searchuser?.map((user) => {
+            return <OtherUser key={user._id} user={user} />;
+          })}
+        </div>
+      ) : (
+        <div className="flex-col">
+          {otherusers?.map((user) => {
+            return <OtherUser key={user._id} user={user} />;
+          })}
+        </div>
+      )}
+    </>
   );
 };
 

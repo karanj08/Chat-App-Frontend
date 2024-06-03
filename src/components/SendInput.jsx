@@ -35,20 +35,23 @@ const SendInput = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handlemessage} action="" className="mx-4 py-3">
-        <div className="w-full relative">
+    <div className="bg-white m-2 rounded-full items-center justify-center">
+      <form
+        onSubmit={handlemessage}
+        action=""
+        className="mx-4 flex flex-grow items-center justify-center"
+      >
+        <div className="w-full">
           <input
             value={message}
             onChange={(e) => setmessage(e.target.value)}
             type="text"
             placeholder="Message"
-            className="border text-md rounded-full block w-full bg-white text-black p-3 outline-none"
+            className="border text-md rounded-full block w-full bg-white text-black p-3 outline-none "
           />
-          <button
-            type="submit"
-            className="absolute pr-4 flex inset-y-0 end-0 items-center"
-          >
+        </div>
+        <div className="mt-1">
+          <button type="submit">
             <IoMdSend className="w-6 h-6 text-sky-500 hover:text-blue-700" />
           </button>
         </div>

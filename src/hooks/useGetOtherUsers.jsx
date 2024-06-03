@@ -17,6 +17,6 @@ const useGetOtherUsers = () => {
       }
     };
     fetchOtherUser();
-  });
+  }, [dispatch]);
 };
 export default useGetOtherUsers;

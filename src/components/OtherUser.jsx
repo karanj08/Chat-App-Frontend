@@ -2,11 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelecteduser } from "../redux/userSlice";
 const OtherUser = ({ user }) => {
-  const { selecteduser } = useSelector((store) => store.user);
+  const { selecteduser, onlineusers } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const handleselectuser = (user) => {
     dispatch(setSelecteduser(user));
   };
+  const isonline = onlineusers?.includes(user._id);
   return (
     <>
       <div
@@ -15,7 +16,7 @@ const OtherUser = ({ user }) => {
           selecteduser?._id === user?._id ? "bg-slate-300" : "bg-white"
         }`}
       >
-        <div className="avatar online">
+        <div className={`${isonline ? "avatar online" : "avatar oflline"} `}>
           <div className="w-10 rounded-full">
             <img src={user?.profilePhoto} alt="user profile" />
           </div>

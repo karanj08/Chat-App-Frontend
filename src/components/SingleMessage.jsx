@@ -12,23 +12,29 @@ const SingleMessage = ({ message }) => {
       <div
         ref={scroll}
         className={`chat ${
-          authuser._id === message.senderId ? "chat-end" : "chat-start"
+          authuser?._id === message?.senderId ? "chat-end" : "chat-start"
         } `}
       >
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">
             <img
               src={`${
-                message.senderId === authuser._id
-                  ? authuser.profilePhoto
-                  : selecteduser.profilePhoto
+                message?.senderId === authuser?._id
+                  ? authuser?.profilePhoto
+                  : selecteduser?.profilePhoto
               }`}
-              alt="Chandler"
+              alt="profile"
             />
           </div>
         </div>
         <div className="chat-header"></div>
-        <div className="chat-bubble bg-sky-600 max-w-[250px] overflow-hidden">
+        <div
+          className={`chat-bubble ${
+            authuser?._id === message?.senderId
+              ? "bg-sky-600"
+              : "bg-white text-black"
+          }  max-w-[250px] overflow-hidden`}
+        >
           {message?.message}
         </div>
         <time className="text-xs font-semibold text-white opacity-50">
